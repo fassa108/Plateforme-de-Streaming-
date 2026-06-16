@@ -8,7 +8,7 @@ export const albums = [
     pistes: [
       { id: 1, titre: "Al-Fatiha", src: "/audio/001.mp3" },
       { id: 2, titre: "Al-Ikhlas", src: "/audio/112.mp3" },
-      { id: 3, titre: "Al-Falaq", src: "/audio/114.mp3" },
+      { id: 3, titre: "Al-Falaq", src: "/audio/113.mp3" },
     ]
   },
 

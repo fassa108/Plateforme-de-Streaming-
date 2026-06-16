@@ -39,10 +39,10 @@ import LigneSourate from '../components/LigneSourate.vue'
 const route = useRoute()
 const album = ref(null)
 
-const emit = defineEmits(['play-track'])
+const emit = defineEmits(['pisteChoisie'])
 
 function jouerPiste(piste) {
-  emit('play-track', piste)
+  emit('pisteChoisie', piste)
 }
 
 onMounted(() => {
