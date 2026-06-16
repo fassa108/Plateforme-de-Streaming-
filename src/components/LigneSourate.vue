@@ -1,11 +1,13 @@
 <template>
   <div class="ligne" @click="play">
+
     <div class="info">
+      <p class="numero">{{ piste.id }}</p>
       <h3>{{ piste.titre }}</h3>
-      <p>{{ piste.duree }}</p>
     </div>
 
     <button class="btn">▶</button>
+
   </div>
 </template>
 
@@ -22,40 +24,39 @@ function play() {
 </script>
 
 <style scoped>
-.ligne {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px;
-  margin-bottom: 10px;
-  background: #1e293b;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
+.ligne{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#0b1220;
+  padding:15px;
+  margin-bottom:10px;
+  border-radius:12px;
+  cursor:pointer;
 }
 
-.ligne:hover {
-  background: #334155;
-  transform: scale(1.01);
+
+.ligne:hover{
+  background:#111827;
 }
 
-.info h3 {
-  margin: 0;
-  color: #fbbf24;
-  font-size: 15px;
+.info{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-.info p {
-  margin: 0;
-  font-size: 12px;
-  color: #94a3b8;
+.numero{
+  color:#fbbf24;
+  font-weight:bold;
 }
 
-.btn {
-  background: #fbbf24;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
+.btn{
+  border:none;
+  background:#fbbf24;
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
 }
 </style>

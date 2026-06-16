@@ -11,24 +11,23 @@
 
     <div v-else>
 
+      <!-- HEADER -->
       <div class="album-header">
 
-        <img :src="album.cover" />
+        <img
+          v-if="album.cover"
+          :src="album.cover"
+          :alt="album.titre"
+        >
 
-        <div class="album-info">
-          <span class="type">ALBUM</span>
+        <h1>{{ album.titre }}</h1>
 
-          <h1>{{ album.titre }}</h1>
-
-          <p>{{ album.recitateur }}</p>
-
-          <span class="genre">
-            {{ album.genre }}
-          </span>
-        </div>
+        <p>{{ album.recitateur }}</p>
+        <p>{{ album.genre }}</p>
 
       </div>
 
+      <!-- LISTE -->
       <div class="liste-sourates">
 
         <h2>Sourates</h2>
@@ -42,12 +41,6 @@
 
       </div>
 
-      <audio
-        ref="player"
-        controls
-        class="player"
-      ></audio>
-
     </div>
 
   </div>
@@ -56,18 +49,16 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { albums } from '../data/albums.js'
+import { albums } from '../data/albums'
 import LigneSourate from '../components/LigneSourate.vue'
 
 const route = useRoute()
 const album = ref(null)
-const player = ref(null)
+
+const emit = defineEmits(['pisteChoisie'])
 
 function jouerPiste(piste) {
-  if (player.value) {
-    player.value.src = piste.audio
-    player.value.play()
-  }
+  emit('pisteChoisie', piste)
 }
 
 onMounted(() => {
@@ -77,101 +68,52 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.album-view {
-  min-height: 100vh;
-  background: #020617;
-  color: white;
-  padding: 30px;
+.album-view{
+  max-width:900px;
+  margin:auto;
 }
 
-.back {
-  text-decoration: none;
-  color: #fbbf24;
-  font-weight: bold;
+.back{
+  color:#fbbf24;
+  text-decoration:none;
 }
 
-.album-header {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-
-  margin-top: 20px;
-  margin-bottom: 35px;
-
-  background: linear-gradient(
-      135deg,
-      #0f172a,
-      #1e293b
-  );
-
-  padding: 30px;
-  border-radius: 20px;
+/* HEADER PROPRE */
+.album-header{
+  text-align:center;
+  background:#0b1220;
+  padding:25px;
+  border-radius:20px;
+  margin-top:20px;
+  transition:0.2s;
+  position:relative;
+  overflow:hidden;
 }
 
-.album-header img {
-  width: 260px;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 20px;
-  border: 3px solid #fbbf24;
+/* hover SANS masque image */
+.album-header:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
-.album-info h1 {
-  font-size: 48px;
-  color: #fbbf24;
-  margin: 10px 0;
+/* IMAGE PROTÉGÉE (IMPORTANT) */
+.album-header img{
+  width:220px;
+  height:220px;
+  object-fit:cover;
+  border-radius:15px;
+  border:2px solid #fbbf24;
+
+  /* 🔥 FIX ANTI MASQUE */
+  filter:none !important;
+  opacity:1 !important;
+  transition:none !important;
 }
 
-.album-info p {
-  color: #cbd5e1;
-  font-size: 18px;
-}
-
-.type {
-  color: #94a3b8;
-  font-size: 12px;
-  letter-spacing: 2px;
-}
-
-.genre {
-  display: inline-block;
-  margin-top: 15px;
-  background: #fbbf24;
-  color: #020617;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-weight: bold;
-}
-
-.liste-sourates {
-  background: #0f172a;
-  border-radius: 20px;
-  padding: 20px;
-}
-
-.liste-sourates h2 {
-  margin-bottom: 20px;
-}
-
-.player {
-  width: 100%;
-  margin-top: 20px;
-}
-
-@media(max-width:768px){
-
-  .album-header{
-    flex-direction:column;
-    text-align:center;
-  }
-
-  .album-header img{
-    width:220px;
-    height:220px;
-  }
-
-  .album-info h1{
-    font-size:32px;
-  }
+/* ❌ BLOQUER TOUT OVERLAY INVISIBLE */
+.album-header::before,
+.album-header::after{
+  content:none !important;
+  display:none !important;
 }
 </style>

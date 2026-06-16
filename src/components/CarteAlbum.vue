@@ -4,11 +4,13 @@
     <div class="image-container">
       <img :src="album.cover" :alt="album.titre" />
 
+      <!-- overlay corrigé -->
       <div class="overlay">
         <div class="play-btn">
           ▶
         </div>
       </div>
+
     </div>
 
     <div class="content">
@@ -36,6 +38,7 @@ defineProps({
   transform: translateY(-6px);
 }
 
+/* IMAGE */
 .image-container {
   position: relative;
   overflow: hidden;
@@ -50,31 +53,36 @@ defineProps({
   transition: .4s;
 }
 
+/* zoom image OK */
 .carte:hover img {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
+/* 🔥 FIX IMPORTANT ICI */
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-      to top,
-      rgba(0,0,0,.8),
-      transparent
-  );
+
+  /* ❌ PLUS de noir complet */
+  background: transparent;
+
   opacity: 0;
   transition: .3s;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  padding: 12px;
 }
 
+/* on affiche juste le bouton, pas un masque */
 .carte:hover .overlay {
   opacity: 1;
 }
 
+/* bouton play */
 .play-btn {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-
   width: 50px;
   height: 50px;
 
@@ -90,6 +98,7 @@ defineProps({
   font-weight: bold;
 }
 
+/* TEXT */
 .content {
   padding-top: 12px;
 }
