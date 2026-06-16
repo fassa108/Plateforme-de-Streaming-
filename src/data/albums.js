@@ -20,7 +20,7 @@ export const albums = [
       {
         id:3,
         titre:"Al-Falaq",
-        audio:"/audio/114.mp3"
+        audio:"/audio/113.mp3"
       }
     ]
   },
