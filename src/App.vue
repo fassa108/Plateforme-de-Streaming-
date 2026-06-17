@@ -13,7 +13,7 @@
       <nav>
 
         <p class="mb-3 text-sm text-slate-400">
-          Bibliothèque
+          Bibliothèquea
         </p>
 
         <ul class="space-y-2">
@@ -160,3 +160,5 @@ watch(sourateActuelle, async () => {
   }
 })
 </script>
+
+

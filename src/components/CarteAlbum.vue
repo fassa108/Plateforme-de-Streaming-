@@ -1,7 +1,7 @@
 <template>
   <router-link
     :to="`/album/${album.id}`"
-    class="group block w-[220px] no-underline transition-all duration-300 hover:-translate-y-1"
+    class="group block w-[250px] no-underline transition-all duration-300 hover:-translate-y-1"
   >
     <div class="relative overflow-hidden rounded-2xl bg-slate-900">
 

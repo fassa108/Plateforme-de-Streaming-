@@ -20,7 +20,7 @@ export const albums = [
       {
         id:3,
         titre:"Al-Falaq",
-        audio:"/audio/114.mp3"
+        audio:"/audio/113.mp3"
       }
     ]
   },
@@ -42,6 +42,31 @@ export const albums = [
         id:2,
         titre:"An-Nazi'at",
         audio:"/audio/079.mp3"
+      }
+    ]
+  },
+  {
+    id:3,
+    titre:"Sourates Fatir (Le createur), Yaseen et Saffat (Les rangée)",
+    recitateur:"Sheikh Hussary",
+    cover:"/images/image2.png",
+    genre:"Récitation",
+
+    pistes:[
+      {
+        id:1,
+        titre:"AL Fatir",
+        audio:"/audio/035.mp3"
+      },
+      {
+        id:2,
+        titre:"Yaseen",
+        audio:"/audio/036.mp3"
+      },
+      {
+        id:3,
+        titre:"As Saafat",
+        audio:"/audio/037.mp3"
       }
     ]
   }
