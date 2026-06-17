@@ -1,17 +1,33 @@
 <template>
+  <div class="min-h-screen bg-slate-950 text-white p-8">
 
-  <div class="home">
+    <!-- HERO -->
+    <div class="mb-12">
 
-    <div class="hero">
-      <h1>Bibliothèque Coranique</h1>
-      <p>Écoutez vos récitations préférées</p>
+      <h1
+        class="text-5xl md:text-6xl font-bold text-yellow-400 mb-3"
+      >
+        Bibliothèque Coranique
+      </h1>
+
+      <p class="text-slate-400 text-lg">
+        Écoutez vos récitations préférées
+      </p>
+
     </div>
 
-    <section class="section">
+    <!-- SECTION -->
+    <section>
 
-      <h2>Nouveaux Albums</h2>
+      <h2
+        class="text-3xl font-bold mb-8"
+      >
+        Nouveaux Albums
+      </h2>
 
-      <div class="albums-container">
+      <div
+        class="grid gap-6 grid-cols-[repeat(auto-fill,minmax(220px,1fr))]"
+      >
 
         <CarteAlbum
           v-for="album in albums"
@@ -24,49 +40,9 @@
     </section>
 
   </div>
-
 </template>
 
 <script setup>
 import CarteAlbum from '../components/CarteAlbum.vue'
 import { albums } from '../data/albums'
 </script>
-
-<style scoped>
-.home{
-  min-height:100vh;
-
-  background:#020617;
-
-  color:white;
-  padding:35px;
-}
-
-.hero{
-  margin-bottom:50px;
-}
-
-.hero h1{
-  font-size:55px;
-  margin-bottom:10px;
-  color:#facc15;
-}
-
-.hero p{
-  color:#b3b3b3;
-}
-
-.section h2{
-  margin-bottom:25px;
-  font-size:28px;
-}
-
-.albums-container{
-  display:grid;
-
-  grid-template-columns:
-  repeat(auto-fill,minmax(220px,1fr));
-
-  gap:25px;
-}
-</style>

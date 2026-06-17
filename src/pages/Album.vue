@@ -1,43 +1,87 @@
 <template>
-  <div class="album-view">
+  <div class="max-w-5xl mx-auto">
 
-    <router-link class="back" to="/">
+    <!-- RETOUR -->
+    <router-link
+      to="/"
+      class="inline-block mb-6 text-yellow-400 hover:text-yellow-300 transition"
+    >
       ← Retour
     </router-link>
 
     <div v-if="!album">
-      Album introuvable
+      <p class="text-white">
+        Album introuvable
+      </p>
     </div>
 
     <div v-else>
 
       <!-- HEADER -->
-      <div class="album-header">
+      <div
+        class="bg-slate-950 rounded-3xl p-8 mb-10 shadow-lg"
+      >
 
-        <img
-          v-if="album.cover"
-          :src="album.cover"
-          :alt="album.titre"
+        <div
+          class="flex flex-col md:flex-row items-center gap-8"
         >
 
-        <h1>{{ album.titre }}</h1>
+          <img
+            v-if="album.cover"
+            :src="album.cover"
+            :alt="album.titre"
+            class="w-56 h-56 object-cover rounded-2xl border-2 border-yellow-400 shadow-xl"
+          >
 
-        <p>{{ album.recitateur }}</p>
-        <p>{{ album.genre }}</p>
+          <div>
+
+            <p class="text-slate-400 uppercase text-sm mb-2">
+              Album
+            </p>
+
+            <h1
+              class="text-4xl md:text-6xl font-bold text-white mb-4"
+            >
+              {{ album.titre }}
+            </h1>
+
+            <p class="text-lg text-slate-300">
+              {{ album.recitateur }}
+            </p>
+
+            <p class="text-slate-500 mt-2">
+              {{ album.genre }}
+            </p>
+
+            <p class="text-slate-400 mt-4">
+              {{ album.pistes.length }} sourates
+            </p>
+
+          </div>
+
+        </div>
 
       </div>
 
       <!-- LISTE -->
-      <div class="liste-sourates">
+      <div>
 
-        <h2>Sourates</h2>
+        <h2
+          class="text-2xl font-bold text-white mb-6"
+        >
+          Sourates
+        </h2>
 
-        <LigneSourate
-          v-for="piste in album.pistes"
-          :key="piste.id"
-          :piste="piste"
-          @play="jouerPiste"
-        />
+        <div class="space-y-2">
+
+          <LigneSourate
+            v-for="piste in album.pistes"
+            :key="piste.id"
+            :piste="piste"
+            @play="jouerPiste"
+          />
+
+        </div>
 
       </div>
 
@@ -63,57 +107,9 @@ function jouerPiste(piste) {
 
 onMounted(() => {
   const id = Number(route.params.id)
-  album.value = albums.find(a => a.id === id)
+
+  album.value = albums.find(
+    a => a.id === id
+  )
 })
 </script>
-
-<style scoped>
-.album-view{
-  max-width:900px;
-  margin:auto;
-}
-
-.back{
-  color:#fbbf24;
-  text-decoration:none;
-}
-
-/* HEADER PROPRE */
-.album-header{
-  text-align:center;
-  background:#0b1220;
-  padding:25px;
-  border-radius:20px;
-  margin-top:20px;
-  transition:0.2s;
-  position:relative;
-  overflow:hidden;
-}
-
-/* hover SANS masque image */
-.album-header:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 25px rgba(0,0,0,0.3);
-}
-
-/* IMAGE PROTÉGÉE (IMPORTANT) */
-.album-header img{
-  width:220px;
-  height:220px;
-  object-fit:cover;
-  border-radius:15px;
-  border:2px solid #fbbf24;
-
-  /* 🔥 FIX ANTI MASQUE */
-  filter:none !important;
-  opacity:1 !important;
-  transition:none !important;
-}
-
-/* ❌ BLOQUER TOUT OVERLAY INVISIBLE */
-.album-header::before,
-.album-header::after{
-  content:none !important;
-  display:none !important;
-}
-</style>
