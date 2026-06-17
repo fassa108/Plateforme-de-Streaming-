@@ -106,6 +106,7 @@ watch(sourateActuelle, async () => {
   background:#0b1220;
   padding:20px;
   border-right:1px solid #1e293b;
+  box-sizing: border-box;
 }
 
 .logo{
@@ -148,10 +149,11 @@ watch(sourateActuelle, async () => {
   position:fixed;
   bottom:0;
   left:250px;
-  right:0;
+  right:8px;
   background:#0b1220;
   border-top:1px solid #1e293b;
   padding:10px 15px;
+  box-sizing: border-box;
 }
 
 .lecteur-actif{
