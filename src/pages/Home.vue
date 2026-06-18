@@ -1,32 +1,29 @@
 <template>
-  <div class="min-h-screen bg-slate-950 text-white p-8">
+  <div class="min-h-screen bg-slate-950 text-white p-4 lg:p-8">
 
-   <!-- HERO -->
-<div class="mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+    <!-- HERO -->
+    <div class="mb-6 lg:mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-8">
+      <div>
+        <h1 class="text-2xl lg:text-4xl font-bold text-yellow-400">
+          Bibliothèque Coranique
+        </h1>
 
-  <div>
+        <p class="mt-2 text-sm lg:text-base text-slate-400">
+          Écoutez vos récitations préférées
+        </p>
+      </div>
 
-<h1 class="text-4xl font-bold text-yellow-400">
-    Bibliothèque Coranique
-  </h1>
+      <!-- RECHERCHE -->
+      <div class="mt-2 lg:mt-0 w-full lg:w-[400px] lg:ml-auto">
+        <input
+          v-model="recherche"
+          type="text"
+          placeholder="🔍 Rechercher un album..."
+          class="w-full rounded-2xl border border-yellow-400 bg-slate-900 px-5 py-3 text-white outline-none transition focus:border-yellow-500"
+        >
+      </div>
+    </div>
 
-  <p class="mt-2 text-slate-400">
-    Écoutez vos récitations préférées
-  </p>
-
-  <!-- RECHERCHE -->
- <div class="mt-6 w-[400px] ml-auto">
-
-  <input
-    v-model="recherche"
-    type="text"
-    placeholder="🔍 Rechercher un album..."
-    class="w-full rounded-xl border border-slate-700 bg-slate-900 px-5 py-3 text-white outline-none transition focus:border-yellow-400"
-  >
-
-</div>
-</div>
-</div>
     <!-- SECTION -->
     <section>
 
@@ -35,7 +32,7 @@
       </h2>
 
       <div
-        class="grid gap-3 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]"
+        class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
       >
 
         <CarteAlbum
