@@ -13,7 +13,7 @@
       <nav>
 
         <p class="mb-3 text-sm text-slate-400">
-          Bibliothèquea
+          Bibliothèque
         </p>
 
         <ul class="space-y-2">
