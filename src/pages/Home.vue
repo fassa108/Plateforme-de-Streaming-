@@ -63,10 +63,11 @@ import { albums } from '../data/albums'
 const recherche = ref('')
 
 const albumsFiltres = computed(() => {
-  if (!recherche.value.trim()) {
+  if (recherche.value.trim() === "" ) {
     return albums
   }
 
+  recherche.value = recherche.value.trim()
   return albums.filter(album =>
     album.titre
       .toLowerCase()
