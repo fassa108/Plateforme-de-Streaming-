@@ -28,7 +28,7 @@ export const albums = [
   {
     id:2,
     titre:"Sourates du Juz Amma",
-    recitateur:"Sheikh Ghamdi",
+    recitateur:"Maher Al Muaqli",
     cover:"/images/image1.png",
     genre:"Récitation",
 
