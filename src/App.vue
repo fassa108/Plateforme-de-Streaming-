@@ -2,121 +2,100 @@
   <div class="flex h-screen bg-slate-950 text-white">
 
     <!-- SIDEBAR / HEADER -->
-    <aside
-      class="fixed left-0 top-0 w-full lg:w-[250px] lg:h-full bg-slate-900 border-b lg:border-b-0 lg:border-r border-slate-800 z-30"
+   <aside
+  class="fixed left-0 top-0 w-full lg:w-[250px] lg:h-full bg-slate-900 border-b lg:border-b-0 lg:border-r border-slate-800 z-30"
+>
+  <!-- HEADER MOBILE -->
+  <div class="flex items-center justify-between px-4 py-3 lg:hidden">
+    <h2 class="text-xl font-bold text-yellow-400">
+      Quran App
+    </h2>
+
+    <button
+      type="button"
+      class="p-2 rounded-md border border-slate-700 text-slate-200 hover:bg-slate-800"
+      @click="menuOuvert = !menuOuvert"
     >
-      <!-- HEADER MOBILE -->
-      <div class="flex items-center justify-between px-4 py-3 lg:hidden">
-        <h2 class="text-xl font-bold text-yellow-400">
-          Quran App
-        </h2>
+      <span v-if="!menuOuvert">☰</span>
+      <span v-else>✕</span>
+    </button>
+  </div>
 
-        <button
-          type="button"
-          class="p-2 rounded-md border border-slate-700 text-slate-200 hover:bg-slate-800"
-          @click="menuOuvert = !menuOuvert"
+  <!-- MENU MOBILE -->
+  <div
+    v-if="menuOuvert"
+    class="px-4 pb-3 lg:hidden"
+  >
+    <p class="mb-3 text-xs text-slate-400">
+      Bibliothèque
+    </p>
+
+    <ul class="space-y-1">
+      <li>
+        <router-link
+          to="/"
+          class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-white hover:bg-slate-800"
+          active-class="bg-slate-800 text-yellow-400 font-bold"
+          @click="menuOuvert = false"
         >
-          <span v-if="!menuOuvert">☰</span>
-          <span v-else>✕</span>
-        </button>
-      </div>
+          <LibraryBig :size="18" />
+          <span>Albums</span>
+        </router-link>
+      </li>
 
-      <!-- MENU MOBILE -->
-      <nav
-        class="px-4 pb-3 lg:hidden"
-        v-if="menuOuvert"
-      >
-        <p class="mb-3 text-xs text-slate-400">
-          Bibliothèque
-        </p>
+      <li>
+        <router-link
+          to="/favoris"
+          class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-white hover:bg-slate-800"
+          active-class="bg-slate-800 text-yellow-400 font-bold"
+          @click="menuOuvert = false"
+        >
+          <Star :size="18" />
+          <span>Favoris</span>
+        </router-link>
+      </li>
 
-        <ul class="space-y-1">
-          <li>
-            <router-link
-              to="/"
-              class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-white transition hover:bg-slate-800"
-              active-class="bg-slate-800 text-yellow-400 font-bold"
-              @click="menuOuvert = false"
-            >
-              <LibraryBig :size="18" />
-              <span>Albums</span>
-            </router-link>
-          </li>
+     
+    </ul>
+  </div>
 
-          <li>
-            <router-link
-              to="/favoris"
-              class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-white transition hover:bg-slate-800"
-              active-class="bg-slate-800 text-yellow-400 font-bold"
-              @click="menuOuvert = false"
-            >
-              <Star :size="18" />
-              <span>Favoris</span>
-            </router-link>
-          </li>
+  <!-- SIDEBAR DESKTOP -->
+  <div class="hidden lg:block h-full p-5">
+    <h2 class="mb-8 text-2xl font-bold text-yellow-400">
+      Quran App
+    </h2>
 
-          <li>
-            <router-link
-              to="/recents"
-              class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-white transition hover:bg-slate-800"
-              active-class="bg-slate-800 text-yellow-400 font-bold"
-              @click="menuOuvert = false"
-            >
-              <History :size="18" />
-              <span>Récents</span>
-            </router-link>
-          </li>
-        </ul>
-      </nav>
+    <p class="mb-3 text-sm text-slate-400">
+      Bibliothèque
+    </p>
 
-      <!-- SIDEBAR DESKTOP (inchangé visuellement) -->
-      <div class="hidden lg:block h-full p-5">
-        <h2 class="mb-8 text-2xl font-bold text-yellow-400">
-          Quran App
-        </h2>
+    <ul class="space-y-2">
+      <li>
+        <router-link
+          to="/"
+          class="flex items-center gap-3 rounded-lg p-3 text-white hover:bg-slate-800"
+          active-class="bg-slate-800 text-yellow-400 font-bold"
+        >
+          <LibraryBig :size="20" />
+          <span>Albums</span>
+        </router-link>
+      </li>
 
-        <nav>
-          <p class="mb-3 text-sm text-slate-400">
-            Bibliothèque
-          </p>
+      <li>
+        <router-link
+          to="/favoris"
+          class="flex items-center gap-3 rounded-lg p-3 text-white hover:bg-slate-800"
+          active-class="bg-slate-800 text-yellow-400 font-bold"
+        >
+          <Star :size="20" />
+          <span>Favoris</span>
+        </router-link>
+      </li>
 
-          <ul class="space-y-2">
-            <li>
-              <router-link
-                to="/"
-                class="flex items-center gap-3 rounded-lg p-3 text-white transition hover:bg-slate-800"
-                active-class="bg-slate-800 text-yellow-400 font-bold"
-              >
-                <LibraryBig :size="20" />
-                <span>Albums</span>
-              </router-link>
-            </li>
-
-            <li>
-              <router-link
-                to="/favoris"
-                class="flex items-center gap-3 rounded-lg p-3 text-white transition hover:bg-slate-800"
-                active-class="bg-slate-800 text-yellow-400 font-bold"
-              >
-                <Star :size="20" />
-                <span>Favoris</span>
-              </router-link>
-            </li>
-
-            <li>
-              <router-link
-                to="/recents"
-                class="flex items-center gap-3 rounded-lg p-3 text-white transition hover:bg-slate-800"
-                active-class="bg-slate-800 text-yellow-400 font-bold"
-              >
-                <History :size="20" />
-                <span>Récents</span>
-              </router-link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </aside>
+    
+    </ul>
+  </div>
+</aside>
 
     <!-- CONTENT -->
     <main

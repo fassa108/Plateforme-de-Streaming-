@@ -91,7 +91,7 @@ Clic sur LigneSourate
   → $emit('pisteChoisie') vers Album.vue
     → $emit('pisteChoisie') vers App.vue
       → sourateActuelle = piste
-        → Lecteur audio joue ✅
+        → Lecteur audio joue 
 ```
 
 ---
